@@ -1,3 +1,5 @@
 A statelessWidget cant be changted its own state. We use a Stateful Widget because the button needs to change the star and color when it is tapped.
 
 GlobalKey<FormState> lets us control and validate the form from the code. When validate() is called, Flutter checks each fields validator. If a  field  is invalid, Flutter displays its error message and rebuilds ther form so the errors appear on the screen.
+
+Whenever I decided to update my UserBanner, some of the favorite Button part of ther code got messed up and I seem to not be able to fix it. 

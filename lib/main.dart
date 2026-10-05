@@ -15,9 +15,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+class _ProfileScreenState extends State<ProfileScreen> {
+  String _currentUsername = 'guest';
+
+  void updateUsername(String newname) {
+    setState(() {
+      _currentUsername = newname;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,39 +44,39 @@ class ProfileScreen extends StatelessWidget {
 }
 
 
-class UserBanner extends StatefulWidget {
-  const UserBanner({super.key});
+class UserBanner extends StatelessWidget {
+  final String username;
 
-  @override
-  State<UserBanner> createState() => _UserBannerState();
+  const UserBanner({super.key, required this.username});
+
+  
 }
 
-class _UserBannerState extends State<UserBanner> {
+class FavoriteButton extends StatelessWidget {
+  const FavoriteButton({super.key});
+
+  @override
+  State<FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
   bool isFavorited = false;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'welcome guest',
-          style: TextStyle(fontSize: 20),
-          ),
-          IconButton(
-            onPressed:() {
-              setState(() {
-                isFavorited = !isFavorited;
-              });
-            },
-            icon: Icon(
-              isFavorited ? Icons.star : Icons.star_border,
-              color: isFavorited? Colors.yellow : Colors.grey,
-            ))
-      ]
+    return IconButton(
+      onPressed: () {
+        setState(() {
+          isFavorited = !isFavorited;
+        });
+      },
+      icon: Icon(
+        isFavorited ? Icons.star : Icons.star_border,
+        color: isFavorited ? Colors.yellow : Colors.grey,
+      ),
     );
   }
-  }
+}
 
   class ProfileForm extends StatefulWidget {
   const ProfileForm({super.key});
