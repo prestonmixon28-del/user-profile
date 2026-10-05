@@ -1,0 +1,1 @@
+A statelessWidget cant be changted its own state. We use a Stateful Widget because the button needs to change the star and color when it is tapped.
